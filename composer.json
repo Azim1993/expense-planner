@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Azim1993\\ExpensePlanner\\": "src/"
+            "Azim1993\\ExpensePlanner\\": "src/",
+            "Azim1993\\ExpensePlanner\\Factory\\": "database/factories/"
         }
     },
     "authors": [
