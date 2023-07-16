@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('monthly_plans', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('month');
-            $table->smallInteger('year');
+            $table->tinyInteger('plan_month');
+            $table->smallInteger('plan_year');
             $table->float('income_amount')->default(0);
             $table->float('targeted_expense_amount')->default(0);
             $table->float('targeted_investment_amount')->default(0);

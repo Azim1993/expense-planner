@@ -3,7 +3,10 @@
 namespace Azim1993\ExpensePlanner\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Azim1993\ExpensePlanner\Http\Requests\MonthlyPlanRequest;
+use Azim1993\ExpensePlanner\Models\MonthlyPlan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MonthlyPlanController extends Controller
 {
@@ -26,9 +29,11 @@ class MonthlyPlanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MonthlyPlanRequest $request)
     {
-        //
+        MonthlyPlan::create($request->all());
+        Session::flash('success', 'Monthly plan created successfully');
+        return redirect()->route('monthly.plans.index');
     }
 
     /**
@@ -36,7 +41,7 @@ class MonthlyPlanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //Sign In
     }
 
     /**

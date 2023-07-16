@@ -10,11 +10,11 @@
             @csrf
             <div class="grid gap-x-8 gap-y-4 grid-cols-3">
                 <div class="">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="month">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="plan_year">
                         Year
                     </label>
                     <div class="relative">
-                        <select name="month" id="month" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline leading-tight focus:outline-none">
+                        <select name="plan_year" id="plan_year" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline leading-tight focus:outline-none">
                             <option value="">Select Year</option>
                             @for($yearStart = \Carbon\Carbon::now()->year; $yearStart >= 2010; $yearStart--)
                                 <option value="{{ $yearStart }}">{{ $yearStart }}</option>
@@ -26,11 +26,11 @@
                     </div>
                 </div>
                 <div class="">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="month">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="plan_month">
                         Month
                     </label>
                     <div class="relative">
-                        <select name="month" id="month" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline leading-tight focus:outline-none">
+                        <select name="plan_month" id="plan_month" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline leading-tight focus:outline-none">
                             <option value="">Select Month</option>
                             @for($monthStart = 1; $monthStart <= 12; $monthStart++)
                                 <option value="{{ $monthStart }}">{{ $monthStart }}</option>
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="mt-6">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Create New Monthly Plan
                 </button>
             </div>

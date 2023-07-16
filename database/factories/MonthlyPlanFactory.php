@@ -19,8 +19,8 @@ class MonthlyPlanFactory extends Factory
     public function definition(): array
     {
         return [
-            'month' => fake()->month,
-            'year' => fake()->year,
+            'plan_month' => fake()->month,
+            'plan_year' => fake()->year,
             'income_amount' => rand(50000, 100000),
             'targeted_expense_amount' => rand(10000, 50000),
             'targeted_investment_amount' => rand(5000, 10000),
