@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('monthly_plans', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('month');
+            $table->smallInteger('year');
+            $table->float('income_amount')->default(0);
+            $table->float('targeted_expense_amount')->default(0);
+            $table->float('targeted_investment_amount')->default(0);
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
