@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('monthly-planner', function() {
+Route::get('planner', function() {
     return 'Hello buddy!';
 });
