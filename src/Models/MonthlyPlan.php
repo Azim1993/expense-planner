@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class MonthlyPlan extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'month',
+        'year',
+        'income_amount',
+        'targeted_expense_amount',
+        'targeted_investment_amount',
+        'note'
+    ];
 }

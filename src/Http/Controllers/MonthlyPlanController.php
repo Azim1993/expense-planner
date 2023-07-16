@@ -20,7 +20,7 @@ class MonthlyPlanController extends Controller
      */
     public function create()
     {
-        //
+        return view('planner::income.create');
     }
 
     /**
