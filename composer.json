@@ -1,0 +1,18 @@
+{
+    "name": "azim1993/expense-planner",
+    "description": "A laravel package to plan montly income expense.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Azim1993\\ExpensePlanner\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "azim1993",
+            "email": "azimnurul1993@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
