@@ -4,8 +4,10 @@ namespace Azim1993\ExpensePlanner\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Azim1993\ExpensePlanner\Http\Requests\MonthlyPlanRequest;
+use Azim1993\ExpensePlanner\Models\Expense;
 use Azim1993\ExpensePlanner\Models\MonthlyPlan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MonthlyPlanController extends Controller
 {
@@ -41,7 +43,15 @@ class MonthlyPlanController extends Controller
     public function show(string $id)
     {
         $monthlyPlan = MonthlyPlan::findOrFail($id);
-        return view('planner::income.show', compact('monthlyPlan'));
+        $expenses = Expense::select(
+                'expense_type',
+                DB::raw("sum(expenses.expense_amount) as expenses")
+            )
+            ->groupBy('expense_type')
+            ->where('monthly_plan_id', $monthlyPlan->id)
+            ->get();
+
+        return view('planner::income.show', compact('monthlyPlan', 'expenses'));
     }
 
     /**

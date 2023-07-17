@@ -7,7 +7,6 @@ use Azim1993\ExpensePlanner\Data\ExpenseTypeEnum;
 use Azim1993\ExpensePlanner\Http\Requests\ExpenseRequest;
 use Azim1993\ExpensePlanner\Models\Expense;
 use Azim1993\ExpensePlanner\Models\MonthlyPlan;
-use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
