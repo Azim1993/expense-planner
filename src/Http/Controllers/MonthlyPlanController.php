@@ -40,7 +40,8 @@ class MonthlyPlanController extends Controller
      */
     public function show(string $id)
     {
-        //Sign In
+        $monthlyPlan = MonthlyPlan::findOrFail($id);
+        return view('planner::income.show', compact('monthlyPlan'));
     }
 
     /**
