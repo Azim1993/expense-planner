@@ -62,9 +62,11 @@ class ExpenseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ExpenseRequest $request, string $id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        $expense->update($request->all());
+        return redirect()->route('expenses.index')->with(['success' => 'Expense updated successfully']);
     }
 
     /**
@@ -72,6 +74,8 @@ class ExpenseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        $expense->delete();
+        return redirect()->route('expenses.index')->with(['success' => 'Expense deleted successfully']);
     }
 }
