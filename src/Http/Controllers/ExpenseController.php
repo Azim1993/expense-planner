@@ -3,6 +3,7 @@
 namespace Azim1993\ExpensePlanner\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Azim1993\ExpensePlanner\Models\Expense;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -12,7 +13,8 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $expenses = Expense::paginate();
+        return view('planner::expense.index', compact('expenses'));
     }
 
     /**
