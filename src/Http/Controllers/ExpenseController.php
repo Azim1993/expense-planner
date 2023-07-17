@@ -3,7 +3,9 @@
 namespace Azim1993\ExpensePlanner\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Azim1993\ExpensePlanner\Data\ExpenseTypeEnum;
 use Azim1993\ExpensePlanner\Models\Expense;
+use Azim1993\ExpensePlanner\Models\MonthlyPlan;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -22,7 +24,9 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        $monthlyPlans = MonthlyPlan::select('id', 'plan_month', 'plan_year')->latest()->get();
+        $types = ExpenseTypeEnum::toArrayValues();
+        return view('planner::expense.create', compact('monthlyPlans', 'types'));
     }
 
     /**
