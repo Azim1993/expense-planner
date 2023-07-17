@@ -8,6 +8,13 @@
             "Azim1993\\ExpensePlanner\\Factory\\": "database/factories/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Azim1993\\ExpensePlanner\\MonthlyExpensePlannerServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "azim1993",
