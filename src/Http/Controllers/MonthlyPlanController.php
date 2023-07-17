@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Azim1993\ExpensePlanner\Http\Requests\MonthlyPlanRequest;
 use Azim1993\ExpensePlanner\Models\MonthlyPlan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class MonthlyPlanController extends Controller
 {
@@ -15,7 +14,8 @@ class MonthlyPlanController extends Controller
      */
     public function index()
     {
-        return view('planner::income.index');
+        $monthlyPlans = MonthlyPlan::latest()->paginate();
+        return view('planner::income.index', compact('monthlyPlans'));
     }
 
     /**
@@ -32,8 +32,7 @@ class MonthlyPlanController extends Controller
     public function store(MonthlyPlanRequest $request)
     {
         MonthlyPlan::create($request->all());
-        Session::flash('success', 'Monthly plan created successfully');
-        return redirect()->route('monthly.plans.index');
+        return redirect()->route('monthly.plans.index')->with(['success' => 'Monthly plan created successfully']);
     }
 
     /**
