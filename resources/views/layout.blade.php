@@ -26,7 +26,13 @@
 <div class="min-h-screen">
     <header class="bg-blue-300 py-6 px-6 border-b-2 border-blue-400">
         <div class="container mx-auto">
-            <h1 class="text-3xl font-bold text-shadow">Monthly Planner</h1>
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-bold text-shadow">Monthly Planner</h1>
+                <div>
+                    <a class="px-3 font-bold" href="{{ route('monthly.plans.index') }}">Plans</a>
+                    <a class="px-3 font-bold" href="{{ route('expenses.index') }}">Expenses</a>
+                </div>
+            </div>
         </div>
     </header>
     <main class="container border-x py-6 mx-auto min-h-screen-half">
