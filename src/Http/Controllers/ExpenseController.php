@@ -4,6 +4,7 @@ namespace Azim1993\ExpensePlanner\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Azim1993\ExpensePlanner\Data\ExpenseTypeEnum;
+use Azim1993\ExpensePlanner\Http\Requests\ExpenseRequest;
 use Azim1993\ExpensePlanner\Models\Expense;
 use Azim1993\ExpensePlanner\Models\MonthlyPlan;
 use Illuminate\Http\Request;
@@ -32,9 +33,10 @@ class ExpenseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ExpenseRequest $request)
     {
-        //
+        Expense::create($request->all());
+        return redirect()->route('expenses.index')->with(['success' => 'Expense store successfully']);
     }
 
     /**
@@ -42,7 +44,8 @@ class ExpenseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $expense = Expense::with('monthlyPlan')->findOrFail($id);
+        return view('planner::expense.show', compact('expense'));
     }
 
     /**
@@ -50,7 +53,10 @@ class ExpenseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $monthlyPlans = MonthlyPlan::select('id', 'plan_month', 'plan_year')->latest()->get();
+        $types = ExpenseTypeEnum::toArrayValues();
+        $expense = Expense::with('monthlyPlan')->findOrFail($id);
+        return view('planner::expense.edit', compact('expense', 'monthlyPlans', 'types'));
     }
 
     /**
