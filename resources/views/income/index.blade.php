@@ -34,7 +34,11 @@
                         <div class="basis-1/12 ml-4">
                             <a href="{{ route('monthly.plans.show', $monthlyPlan) }}" class="mb-2 border-2 border-blue-800 py-1 rounded px-4 block w-full text-center hover:bg-blue-800 hover:text-white">View</a>
                             <a href="{{ route('monthly.plans.edit', $monthlyPlan) }}" class="mb-2 border-2 border-blue-800 py-1 rounded px-4 block w-full text-center hover:bg-blue-800 hover:text-white">Edit</a>
-                            <a href="{{ route('monthly.plans.destroy', $monthlyPlan) }}" class="border-2 border-red-500 py-1 text-red-500 rounded px-4 block w-full text-center hover:bg-red-500 hover:text-white">Delete</a>
+                            <a href="#" onclick="if (confirm('Delete selected item?')){return document.getElementById('delete-monthly-plan-from').submit(); } else { event.preventDefault()}"  class="border-2 border-red-500 py-1 text-red-500 rounded px-4 block w-full text-center hover:bg-red-500 hover:text-white">Delete</a>
+                            <form id="delete-monthly-plan-from" class="hidden" method="POST" action="{{ route('monthly.plans.destroy', $monthlyPlan) }}">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </div>
                     </div>
                     @endforeach
