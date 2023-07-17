@@ -46,9 +46,10 @@ class MonthlyPlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string|int $id)
     {
-        //
+        $monthlyPlan = MonthlyPlan::findOrFail($id);
+        return view('planner::income.edit', compact('monthlyPlan'));
     }
 
     /**
