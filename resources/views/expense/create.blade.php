@@ -6,6 +6,11 @@
         <a href="{{ route('expenses.index') }}" class="bg-gray-700 px-6 py-2 text-white rounded">Back</a>
     </section>
     <div class="px-6 py-4">
+        @if(isset($errors) && $errors->any())
+            @foreach ($errors->all() as $error)
+                <p class="text-bold py-1 text-red-500">{{ $error }}</p>
+            @endforeach
+        @endif
         <form action="{{ route('expenses.store') }}" method="post">
             @csrf
             <div class="grid gap-x-8 gap-y-4 grid-cols-3">
@@ -40,6 +45,13 @@
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
                     </div>
+                </div>
+                <div></div>
+                <div class="col-span-2">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="title">
+                        Title
+                    </label>
+                    <input name="title" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="Title">
                 </div>
                 <div></div>
                 <div class="col-span-2">

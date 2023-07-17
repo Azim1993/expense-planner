@@ -26,14 +26,14 @@
                         <div class="basis-9/12">
                             <h3 class="font-bold"> {{ $expense->title }}</h3>
                             <p><strong>Expense Amount: </strong> {{ $expense->expense_amount }}</p>
-                            <p><strong>Expense Type: </strong> <span class="px-3 py-1 bg-gray-400 text-white font-bold">{{ $expense->expense_type }}</span></p>
+                            <p><strong>Expense Type: </strong> <span class="px-3 py-1 bg-gray-400 text-white font-bold rounded-lg">{{ $expense->expense_type }}</span></p>
                             <p>{{ $expense->description }}</p>
                         </div>
                         <div class="basis-1/12 ml-4">
                             <a href="{{ route('expenses.show', $expense) }}" class="mb-2 border-2 border-blue-800 py-1 rounded px-4 block w-full text-center hover:bg-blue-800 hover:text-white">View</a>
                             <a href="{{ route('expenses.edit', $expense) }}" class="mb-2 border-2 border-blue-800 py-1 rounded px-4 block w-full text-center hover:bg-blue-800 hover:text-white">Edit</a>
-                            <a href="#" onclick="if (confirm('Delete selected item?')){return document.getElementById('delete-monthly-plan-from').submit(); } else { event.preventDefault()}"  class="border-2 border-red-500 py-1 text-red-500 rounded px-4 block w-full text-center hover:bg-red-500 hover:text-white">Delete</a>
-                            <form id="delete-monthly-plan-from" class="hidden" method="POST" action="{{ route('expenses.destroy', $expenses) }}">
+                            <a href="#" onclick="if (confirm('Delete selected item?')){return document.getElementById('delete-expense-from').submit(); } else { event.preventDefault()}"  class="border-2 border-red-500 py-1 text-red-500 rounded px-4 block w-full text-center hover:bg-red-500 hover:text-white">Delete</a>
+                            <form id="delete-expense-from" class="hidden" method="POST" action="{{ route('expenses.destroy', $expense) }}">
                                 @csrf
                                 @method('DELETE')
                             </form>

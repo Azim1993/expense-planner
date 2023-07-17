@@ -4,6 +4,7 @@ namespace Azim1993\ExpensePlanner\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Expense extends Model
@@ -18,8 +19,8 @@ class Expense extends Model
         'expense_type'
     ];
 
-    public function monthlyPlan(): HasOne
+    public function monthlyPlan(): BelongsTo
     {
-        return $this->hasOne(MonthlyPlan::class);
+        return $this->belongsTo(MonthlyPlan::class);
     }
 }
