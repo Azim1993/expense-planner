@@ -13,7 +13,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $expenses = Expense::paginate();
+        $expenses = Expense::with('monthlyPlan')->paginate();
         return view('planner::expense.index', compact('expenses'));
     }
 

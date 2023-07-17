@@ -19,7 +19,16 @@
                 <div class="divide-y">
                     @foreach($expenses as $expense)
                     <div class="flex flex-row py-4 first:pt-0 last:pb-0">
-                        
+                        <div class="basis-2/12 bg-blue-300 flex justify-center items-center mr-4 border rounded">
+                            <p class="font-bold mr-2">{{\Azim1993\ExpensePlanner\Data\MonthEnum::getMonth($expense?->monthlyPlan?->plan_month)}}</p>
+                            <p class="text-lg"> - {{$expense?->monthlyPlan?->plan_year }}</p>
+                        </div>
+                        <div class="basis-9/12">
+                            <h3 class="font-bold"> {{ $expense->title }}</h3>
+                            <p><strong>Expense Amount: </strong> {{ $expense->expense_amount }}</p>
+                            <p><strong>Expense Type: </strong> <span class="px-3 py-1 bg-gray-400 text-white font-bold">{{ $expense->expense_type }}</span></p>
+                            <p>{{ $expense->description }}</p>
+                        </div>
                         <div class="basis-1/12 ml-4">
                             <a href="{{ route('expenses.show', $expense) }}" class="mb-2 border-2 border-blue-800 py-1 rounded px-4 block w-full text-center hover:bg-blue-800 hover:text-white">View</a>
                             <a href="{{ route('expenses.edit', $expense) }}" class="mb-2 border-2 border-blue-800 py-1 rounded px-4 block w-full text-center hover:bg-blue-800 hover:text-white">Edit</a>
