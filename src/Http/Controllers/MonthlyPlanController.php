@@ -67,6 +67,8 @@ class MonthlyPlanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $monthlyPlan = MonthlyPlan::findOrFail($id);
+        $monthlyPlan->delete();
+        return redirect(route('monthly.plans.index'))->with('success', 'Monthly plan deleted successfully');
     }
 }
